@@ -3,13 +3,11 @@ import {StateType} from '../../store/store';
 import {CounterSettings} from './CounterSettings';
 import {
     makeMessage,
-    setButtonDisabled,
     setButtonPressed,
-    setMaxError,
     setMaxValue,
-    setMinError,
     setMinValue
 } from '../../store/counter-reducer';
+import {setButtonDisabled, setMaxError, setMinError} from '../../store/counterSettings-reducer';
 
 type MapStateToPropsType = {
     minValue: number
@@ -37,9 +35,9 @@ const mapStateToProps = (state: StateType) => ({
     minValue: state.counter.minValue,
     maxValue: state.counter.maxValue,
 
-    buttonDisabled: state.counter.buttonDisabled,
-    minError: state.counter.minError,
-    maxError: state.counter.maxError,
+    buttonDisabled: state.counterSettings.buttonDisabled,
+    minError: state.counterSettings.minError,
+    maxError: state.counterSettings.maxError,
 })
 
 export const CounterSettingsContainer = connect(mapStateToProps,

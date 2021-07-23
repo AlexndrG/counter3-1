@@ -7,10 +7,6 @@ const initialState = {
     maxValue: INIT_MAX_VALUE,
     text: '',
     error: false,
-
-    buttonDisabled: true,
-    minError: false,
-    maxError: false
 }
 
 type CounterStateType = typeof initialState
@@ -39,29 +35,12 @@ type SetButtonPressedType = {
     type: 'SET_BUTTON_PRESSED'
 }
 
-type SetButtonDisabledType = {
-    type: 'SET_BUTTON_DISABLED'
-    value: boolean
-}
-type SetMinErrorType = {
-    type: 'SET_MIN_ERROR'
-    value: boolean
-}
-type SetMaxErrorType = {
-    type: 'SET_MAX_ERROR'
-    value: boolean
-}
-
-
 export type ActionsType =
     SetCounterType
     | SetMinValueType
     | SetMaxValueType
     | MakeMessageType
     | SetButtonPressedType
-    | SetButtonDisabledType
-    | SetMinErrorType
-    | SetMaxErrorType
 
 export const counterReducer = (state: CounterStateType = initialState, action: ActionsType): CounterStateType => {
     switch (action.type) {
@@ -101,26 +80,6 @@ export const counterReducer = (state: CounterStateType = initialState, action: A
             }
         }
 
-        case 'SET_BUTTON_DISABLED': {
-            return {
-                ...state,
-                buttonDisabled: action.value
-            }
-        }
-        case 'SET_MIN_ERROR': {
-            return {
-                ...state,
-                minError: action.value
-            }
-        }
-        case 'SET_MAX_ERROR': {
-            return {
-                ...state,
-                maxError: action.value
-            }
-        }
-
-
         default:
             return state
     }
@@ -132,7 +91,3 @@ export const setMaxValue = (value: number): SetMaxValueType => ({type: 'SET_MAX_
 
 export const makeMessage = (text: string, error: boolean): MakeMessageType => ({type: 'MAKE_MESSAGE', text, error})
 export const setButtonPressed = (): SetButtonPressedType => ({type: 'SET_BUTTON_PRESSED'})
-
-export const setButtonDisabled = (value: boolean): SetButtonDisabledType => ({type: 'SET_BUTTON_DISABLED', value})
-export const setMinError = (value: boolean): SetMinErrorType => ({type: 'SET_MIN_ERROR', value})
-export const setMaxError = (value: boolean): SetMaxErrorType => ({type: 'SET_MAX_ERROR', value})
