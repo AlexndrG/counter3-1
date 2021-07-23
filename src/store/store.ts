@@ -20,7 +20,7 @@ store.subscribe(() => {
     const stateMinValue = state.counter.minValue
     const stateMaxValue = state.counter.maxValue
     if (minValue !== stateMinValue || maxValue !== stateMaxValue) {
-        saveToLocalStorage(store.getState())
+        saveToLocalStorage(state)
         minValue=stateMinValue
         maxValue=stateMaxValue
     }
