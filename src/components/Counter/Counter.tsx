@@ -2,15 +2,8 @@ import React from 'react';
 import s from './Counter.module.css'
 import {Display} from '../Display/Display';
 import {Button} from '../Button/Button';
+import {CounterPropsType} from './CounterContainer';
 
-type CounterPropsType = {
-    counter: number
-    minValue: number
-    maxValue: number
-    text: string
-    error: boolean
-    setCounterValue: (value: number) => void
-}
 
 export const Counter = (props: CounterPropsType) => {
     const increment = () => {
@@ -29,7 +22,7 @@ export const Counter = (props: CounterPropsType) => {
             <Display
                 counterValue={props.counter}
                 text={props.text}
-                error={ !!props.text ? props.error : props.counter >= props.maxValue}
+                error={!!props.text ? props.error : props.counter >= props.maxValue}
             />
 
             <div className={s.buttons}>
