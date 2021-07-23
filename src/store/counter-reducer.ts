@@ -1,5 +1,5 @@
-const INIT_MIN_VALUE = 0;
-const INIT_MAX_VALUE = 5;
+export const INIT_MIN_VALUE = 0;
+export const INIT_MAX_VALUE = 5;
 
 const initialState = {
     counter: INIT_MIN_VALUE,
