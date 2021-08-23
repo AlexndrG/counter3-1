@@ -1,14 +1,14 @@
 import React from 'react';
 import s from './CounterWithParams.module.css'
-import {CounterSettingsContainer} from '../CounterSettings/CounterSettingsContainer';
-import {CounterContainer} from '../Counter/CounterContainer';
+import {Counter} from '../Counter/Counter';
+import {CounterSettings} from '../CounterSettings/CounterSettings';
 
 
 export const CounterWithParams = () => {
     return (
         <div className={s.main}>
-            <CounterSettingsContainer/>
-            <CounterContainer/>
+            <CounterSettings/>
+            <Counter/>
         </div>
     )
 }

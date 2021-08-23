@@ -9,7 +9,7 @@ const initialState = {
     error: false,
 }
 
-type CounterStateType = typeof initialState
+export type CounterStateType = typeof initialState
 
 
 

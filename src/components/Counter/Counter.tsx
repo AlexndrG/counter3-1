@@ -2,39 +2,52 @@ import React from 'react';
 import s from './Counter.module.css'
 import {Display} from '../Display/Display';
 import {Button} from '../Button/Button';
-import {CounterPropsType} from './CounterContainer';
+import {useDispatch, useSelector} from 'react-redux';
+import { StateType } from '../../store/store';
+import {CounterStateType, setCounterValue} from '../../store/counter-reducer';
 
 
-export const Counter = (props: CounterPropsType) => {
+export const Counter = () => {
+    const counterState = useSelector<StateType,CounterStateType>(state => state.counter)
+    const dispatch = useDispatch()
+
+    const {
+        counter,
+        minValue,
+        maxValue,
+        text,
+        error,
+    } = counterState
+
     const increment = () => {
-        if (props.counter < props.maxValue) {
-            props.setCounterValue(props.counter + 1)
+        if (counter < maxValue) {
+            dispatch(setCounterValue(counter + 1))
         }
     }
 
     const reset = () => {
-        props.setCounterValue(props.minValue)
+        dispatch(setCounterValue(minValue))
     }
 
     return (
         <div className={s.main}>
 
             <Display
-                counterValue={props.counter}
-                text={props.text}
-                error={!!props.text ? props.error : props.counter >= props.maxValue}
+                counterValue={counter}
+                text={text}
+                error={!!text ? error : counter >= maxValue}
             />
 
             <div className={s.buttons}>
                 <Button
                     name={'Inc'}
-                    disabled={!!props.text || props.counter >= props.maxValue}
+                    disabled={!!text || counter >= maxValue}
                     callback={increment}
                 />
 
                 <Button
                     name={'Reset'}
-                    disabled={!!props.text || props.counter === props.minValue}
+                    disabled={!!text || counter === minValue}
                     callback={reset}
                 />
             </div>
